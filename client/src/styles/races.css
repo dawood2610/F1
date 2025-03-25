@@ -1,0 +1,60 @@
+/* src/styles/races.css */
+
+.races-container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 1rem;
+    color: white;
+    text-align: center;
+  }
+  
+  .races-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #ff1e1e;
+  }
+  
+  .races-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .race-detail-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: 280px;
+    box-shadow: 0 0 10px #ff1e1e33;
+    transition: transform 0.2s ease;
+  }
+  
+  .race-detail-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px #ff1e1e55;
+  }
+  
+  .race-detail-card h3 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  
+  .race-detail-card p {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin: 0.2rem 0;
+  }
+  
+  .race-card-link {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s;
+  }
+  
+  .race-card-link:hover {
+    transform: scale(1.03);
+  }
+  
+  

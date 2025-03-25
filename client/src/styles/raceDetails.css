@@ -1,0 +1,59 @@
+.race-details-container {
+    max-width: 600px;
+    margin: 4rem auto;
+    background-color: #111;
+    padding: 2rem;
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 0 20px #ff1e1e33;
+    text-align: center;
+  }
+  
+  .race-details-container h2 {
+    color: #ff1e1e;
+    margin-bottom: 1rem;
+  }
+  
+  .race-details-container p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+  }
+  
+  .back-button {
+    display: inline-block;
+    margin-top: 2rem;
+    color: #ff1e1e;
+    text-decoration: none;
+    border: 1px solid #ff1e1e;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #ff1e1e;
+    color: white;
+  }
+  .race-drivers-section {
+    margin-top: 2rem;
+    text-align: left;
+  }
+  
+  .race-drivers-section h3 {
+    color: #ff1e1e;
+    margin-bottom: 1rem;
+  }
+  
+  .driver-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .driver-list li {
+    padding: 0.4rem 0;
+    font-size: 1rem;
+    color: #ddd;
+    border-bottom: 1px solid #222;
+  }
+  
+  
