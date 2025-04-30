@@ -1,3 +1,4 @@
+// src/pages/Register.jsx
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -34,8 +35,13 @@ const Register = () => {
 
   return (
     <PageWrapper>
-      <div className="register-container">
-        <h2>Admin Signup</h2>
+      <div className="register-container reveal fade-up">
+        <img
+          src="/images/f1-car-image.png"
+          alt="F1 Logo"
+          className="register-logo"
+        />
+        <h2 className="register-title">Admin Signup</h2>
         <form onSubmit={handleSubmit} className="register-form">
           <input
             type="text"

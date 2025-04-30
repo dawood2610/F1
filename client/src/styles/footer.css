@@ -1,44 +1,114 @@
-/* src/styles/footer.css */
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&display=swap');
 
 .footer {
-    background-color: #0a0a0a;
-    color: #ffffffcc;
-    padding: 2rem;
-    text-align: center;
-    border-top: 2px solid #ff1e1e;
-    margin-top: 4rem;
-  }
-  
-  .footer h3 {
-    color: #ff1e1e;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .footer p {
-    font-size: 0.95rem;
-    margin: 0.5rem 0;
-  }
-  
-  .footer-links {
-    margin: 1rem 0;
-  }
-  
-  .footer-links a {
-    margin: 0 1rem;
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  
-  .footer-links a:hover {
-    color: #ff1e1e;
-  }
-  
-  .footer-copy {
-    margin-top: 1rem;
-    font-size: 0.8rem;
-    color: #888;
-  }
-  
+  font-family: 'Titillium Web', sans-serif;
+  background: linear-gradient(135deg, #111 0%, #0a0a0a 100%);
+  color: #ffffffcc;
+  padding: 2.5rem 1rem 2rem;
+  text-align: center;
+  border-top: 3px solid #e10600;
+  margin-top: auto;
+  z-index: 10;
+  position: relative;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease forwards;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer h3 {
+  color: #e10600;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(255, 30, 30, 0.4);
+  position: relative;
+}
+
+.footer p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #ccc;
+}
+
+.footer-links {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #e10600;
+  bottom: -4px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #e10600;
+}
+
+.footer-links a:hover::after {
+  width: 100%;
+}
+
+.footer-copy {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Entrance Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer stick to bottom when content is short */
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main, .page-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}

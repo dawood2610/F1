@@ -1,27 +1,26 @@
-import { useState } from "react";
-import axios from "axios";
+// src/pages/Login.jsx
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import { useContext, useState } from "react";
 import PageWrapper from "../components/PageWrapper";
-import "../styles/login.css";
-import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
+import "../styles/login.css";
 
 const Login = () => {
-  const [form, setForm] = useState({ email: "", password: "" });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [error, setError] = useState("");
-  const navigate = useNavigate();
   const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (formData) => {
     setError("");
-
     try {
-      const res = await axios.post("/api/auth/login", form);
+      const res = await axios.post("/api/auth/login", formData);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("admin", JSON.stringify(res.data.user));
       login(res.data.user, res.data.token);
@@ -33,25 +32,32 @@ const Login = () => {
 
   return (
     <PageWrapper>
-      <div className="login-container">
-        <h2>Admin Login</h2>
-        <form onSubmit={handleSubmit} className="login-form">
+      <div className="login-container reveal fade-up">
+        <img
+          src="/images/f1-car-image.png"
+          alt="F1 Logo"
+          className="login-logo"
+        />
+        <h2 className="login-title">Admin Login</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="login-form">
           <input
             type="email"
-            name="email"
             placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-            required
+            {...register("email", { required: "Email is required" })}
           />
+          {errors.email && (
+            <p className="error-message">{errors.email.message}</p>
+          )}
+
           <input
             type="password"
-            name="password"
             placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            required
+            {...register("password", { required: "Password is required" })}
           />
+          {errors.password && (
+            <p className="error-message">{errors.password.message}</p>
+          )}
+
           <button type="submit">Login</button>
           {error && <p className="error-message">{error}</p>}
         </form>

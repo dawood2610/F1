@@ -3,7 +3,7 @@ import "../styles/footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer reveal fade-in">
       <div className="footer-content">
         <h3>F1 Race Tracker</h3>
         <p>

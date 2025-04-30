@@ -1,60 +1,348 @@
 /* src/styles/races.css */
-
 .races-container {
-    max-width: 1000px;
-    margin: 3rem auto;
-    padding: 1rem;
-    color: white;
-    text-align: center;
+  font-family: 'Titillium Web', sans-serif;
+  color: #fff;
+  background-color: #15151e;
+  padding: 8rem 2rem 3rem; /* ⬅️ Increased top padding to 8rem */
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+/* Header and Title */
+.races-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.races-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0;
+  color: #ff1e1e;
+  position: relative;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+}
+
+.races-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff1e1e, transparent);
+  border-radius: 2px;
+}
+
+/* Search Input */
+.search-container {
+  position: relative;
+  width: 300px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border-radius: 30px;
+  border: 1px solid #444;
+  background-color: rgba(20, 20, 20, 0.7);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #ff1e1e;
+  box-shadow: 0 0 0 2px rgba(255, 30, 30, 0.3);
+}
+
+.search-container::before {
+  content: '🔍';
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+/* Race Counter */
+.race-counter {
+  text-align: right;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  width: 100%;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(255, 30, 30, 0.1);
+  border-left: 4px solid #ff1e1e;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1.5rem;
+}
+
+.loading-text {
+  color: #aaa;
+  font-size: 1.1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* No races message */
+.no-races-message {
+  text-align: center;
+  padding: 3rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin: 2rem 0;
+  border: 1px solid #333;
+}
+
+.no-races-message p {
+  color: #aaa;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Race List and Cards */
+.races-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.race-card-link {
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+  min-width: 300px;
+  max-width: 380px;
+  perspective: 1000px;
+}
+
+.race-detail-card {
+  background: linear-gradient(135deg, #222 0%, #111 100%);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.race-detail-card:hover {
+  transform: translateY(-10px) rotateX(5deg);
+  box-shadow: 0 15px 30px rgba(255, 30, 30, 0.2);
+}
+
+.race-card-flag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #ff1e1e, #ff5f5f);
+}
+
+.race-card-content {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.race-detail-card h3 {
+  color: #fff;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.race-info-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.race-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.info-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: rgba(255, 30, 30, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #ff1e1e;
+}
+
+.date-icon::before {
+  content: '📅';
+  font-size: 0.8rem;
+}
+
+.location-icon::before {
+  content: '📍';
+  font-size: 0.8rem;
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: 0.2rem;
+}
+
+.info-value {
+  font-size: 0.95rem;
+  color: #ddd;
+  font-weight: 500;
+}
+
+.race-status {
+  margin-top: 1rem;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.status.upcoming {
+  background-color: rgba(0, 128, 0, 0.15);
+  color: #4dff4d;
+  border: 1px solid rgba(0, 128, 0, 0.3);
+}
+
+.status.completed {
+  background-color: rgba(128, 128, 128, 0.15);
+  color: #cccccc;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+}
+
+.view-details {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #ff1e1e;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.race-detail-card:hover .view-details {
+  background-color: rgba(255, 30, 30, 0.2);
+}
+
+.view-details svg {
+  transition: transform 0.3s ease;
+}
+
+.race-detail-card:hover .view-details svg {
+  transform: translateX(5px);
+}
+
+/* Animations */
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { text-shadow: 0 0 2px rgba(255, 30, 30, 0.2); }
+  50% { text-shadow: 0 0 10px rgba(255, 30, 30, 0.5); }
+  100% { text-shadow: 0 0 2px rgba(255, 30, 30, 0.2); }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.delay-0 { animation-delay: 0s; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .races-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
   }
   
-  .races-container h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #ff1e1e;
-  }
-  
-  .races-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-  }
-  
-  .race-detail-card {
-    background: #111;
-    border: 1px solid #222;
-    border-radius: 12px;
-    padding: 1.5rem;
-    width: 280px;
-    box-shadow: 0 0 10px #ff1e1e33;
-    transition: transform 0.2s ease;
-  }
-  
-  .race-detail-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 20px #ff1e1e55;
-  }
-  
-  .race-detail-card h3 {
-    color: #fff;
-    margin-bottom: 0.5rem;
-  }
-  
-  .race-detail-card p {
-    color: #ccc;
-    font-size: 0.95rem;
-    margin: 0.2rem 0;
+  .search-container {
+    width: 100%;
   }
   
   .race-card-link {
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s;
+    min-width: 100%;
   }
-  
-  .race-card-link:hover {
-    transform: scale(1.03);
-  }
-  
-  
+}
