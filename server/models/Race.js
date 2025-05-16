@@ -1,15 +1,12 @@
+// server/models/Race.js
 const mongoose = require('mongoose');
 
-const driverSchema = new mongoose.Schema({
-  name: String,
-  team: String,
-});
-
 const raceSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  name: String,
   location: String,
-  date: { type: Date, required: true },
-  drivers: [driverSchema], 
-});
+  date: Date,
+  teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Team' }],
+  drivers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Driver' }]
+}, { timestamps: true });
 
 module.exports = mongoose.model('Race', raceSchema);

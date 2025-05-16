@@ -8,6 +8,7 @@ import Footer from "./components/footer";
 import Home from "./pages/Home";
 import Races from "./pages/Races";
 import Admin from "./pages/admin";
+import About from "./pages/About";
 import RaceDetails from "./pages/RaceDetails";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/admin" element={<Admin />} />
             <Route path="/races/:id" element={<RaceDetails />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/about" element={<About />} />
             <Route path="/register" element={<Register />} />
             <Route
               path="/admin"

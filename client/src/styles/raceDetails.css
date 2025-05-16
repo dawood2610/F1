@@ -1,59 +1,123 @@
+/* Root color vars should be defined globally */
+:root {
+  --f1-black: #15151e;
+  --f1-red: #e10600;
+}
+
+/* Container */
 .race-details-container {
-    max-width: 600px;
-    margin: 4rem auto;
-    background-color: #111;
-    padding: 2rem;
-    border-radius: 12px;
-    color: white;
-    box-shadow: 0 0 20px #ff1e1e33;
-    text-align: center;
+  max-width: 600px;
+  margin: 8rem auto 4rem;
+  background-color: var(--f1-black);
+  padding: 2.5rem;
+  border-radius: 18px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(225, 6, 0, 0.2);
+  border-left: 4px solid var(--f1-red);
+  animation: fadeUp 1s ease forwards;
+}
+
+/* Headings */
+.race-details-container h2 {
+  color: var(--f1-red);
+  margin-bottom: 1.2rem;
+  font-size: 1.8rem;
+  text-shadow: 0 2px 8px rgba(255, 30, 30, 0.4);
+}
+
+.race-details-container p {
+  font-size: 1.1rem;
+  margin: 0.6rem 0;
+  color: #ccc;
+}
+
+/* Back Button */
+.back-button {
+  display: inline-block;
+  margin-top: 2rem;
+  color: var(--f1-red);
+  text-decoration: none;
+  border: 1px solid var(--f1-red);
+  padding: 0.6rem 1.3rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.back-button:hover {
+  background-color: var(--f1-red);
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 30, 30, 0.3);
+}
+
+/* Drivers Section */
+.race-drivers-section {
+  margin-top: 2.5rem;
+  text-align: left;
+}
+
+.race-drivers-section h3 {
+  color: var(--f1-red);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.driver-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.driver-list li {
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  color: #ddd;
+  border-bottom: 1px solid #222;
+}
+
+/* Loading Text */
+.loading-text {
+  font-size: 1rem;
+  color: #aaa;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-up {
+  animation: fadeUp 1s ease forwards;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .race-details-container {
+    margin: 6rem 1rem 3rem;
+    padding: 2rem 1.5rem;
+  }
+
   .race-details-container h2 {
-    color: #ff1e1e;
-    margin-bottom: 1rem;
+    font-size: 1.6rem;
   }
-  
-  .race-details-container p {
-    font-size: 1.1rem;
-    margin: 0.5rem 0;
-  }
-  
-  .back-button {
-    display: inline-block;
-    margin-top: 2rem;
-    color: #ff1e1e;
-    text-decoration: none;
-    border: 1px solid #ff1e1e;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-  
-  .back-button:hover {
-    background-color: #ff1e1e;
-    color: white;
-  }
-  .race-drivers-section {
-    margin-top: 2rem;
-    text-align: left;
-  }
-  
-  .race-drivers-section h3 {
-    color: #ff1e1e;
-    margin-bottom: 1rem;
-  }
-  
-  .driver-list {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .driver-list li {
-    padding: 0.4rem 0;
-    font-size: 1rem;
-    color: #ddd;
-    border-bottom: 1px solid #222;
-  }
-  
-  
+}
+
