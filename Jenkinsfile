@@ -7,19 +7,13 @@ pipeline {
   }
 
   stages {
-    stage('Clone Repository') {
+    stage('Clean Up Old Containers') {
       steps {
-        git 'https://github.com/dawood2610/F1.git'
+        dir('.') {
+          sh 'docker-compose -p $COMPOSE_PROJECT_NAME -f $COMPOSE_FILE down || true'
+        }
       }
     }
-    stage('Clean Up Old Containers') {
-  steps {
-    dir('.') {
-      sh 'docker-compose -p $COMPOSE_PROJECT_NAME -f $COMPOSE_FILE down'
-    }
-  }
-}
-
 
     stage('Build and Run Containers') {
       steps {
