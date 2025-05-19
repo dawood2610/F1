@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Clone Repository') {
       steps {
-        git 'https://github.com/dawood2610/f1-race-tracker.git'
+        git 'https://github.com/dawood2610/F1.git'
       }
     }
 
