@@ -12,10 +12,20 @@ pipeline {
         git 'https://github.com/dawood2610/F1.git'
       }
     }
+    stage('Clean Up Old Containers') {
+  steps {
+    dir('.') {
+      sh 'docker-compose -p $COMPOSE_PROJECT_NAME -f $COMPOSE_FILE down'
+    }
+  }
+}
+
 
     stage('Build and Run Containers') {
       steps {
-        sh 'docker-compose -p $COMPOSE_PROJECT_NAME -f $COMPOSE_FILE up --build -d'
+        dir('.') {
+          sh 'docker-compose -p $COMPOSE_PROJECT_NAME -f $COMPOSE_FILE up --build -d'
+        }
       }
     }
 
@@ -29,7 +39,7 @@ pipeline {
   post {
     always {
       echo "Pipeline finished."
+      sh 'docker-compose -p $COMPOSE_PROJECT_NAME -f $COMPOSE_FILE ps'
     }
   }
 }
-
